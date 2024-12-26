@@ -9,6 +9,7 @@ image cafe = "images/cafe.png"
 image bedroom = "images/bedroom.png"
 image document = "images/document.png"
 image it_company = "images/it_company.png"
+image cross = "images/cross.png"
 
 
 image teacher = im.Scale("images/teacher.png", int(800 * (505 / 1142)), 800)
@@ -42,8 +43,8 @@ label start:
     call scene_one from _call_scene_one  
     call scene_two from _call_scene_two  
     call scene_three from _call_scene_three 
-    call scene_five from _call_scene_five
     call scene_four from _call_scene_four
+    call scene_five from _call_scene_five
     call scene_six from _call_scene_six
 
     return
@@ -61,7 +62,6 @@ label scene_one:
     show maks at Position(xpos = 0.2, ypos = 1.1)
 
     teacher "Макс, вы что-то хотите сказать? Или уже начнете писать конспект?"
-    play sound "sms.mp3"
 
     menu:
         "Нет, ничего, извините…":
@@ -129,28 +129,38 @@ label scene_one:
     return
 
 label scene_two:
-        
-        "Писать конспекты, учить определения, да кому это
+    play sound "city.mp3"
+    
+    "Писать конспекты, учить определения, да кому это
     нужно…"
-        "Я всей душой ненавижу эту профессию и выбор своих
+    "Я всей душой ненавижу эту профессию и выбор своих
     родителей. Вот возьму и отчислюсь и поступлю куда всегда
     хотел. "
-        "А может не стоит… Я всё-таки уже на третьем курсе, ещё
+    "А может не стоит… Я всё-таки уже на третьем курсе, ещё
     немного и у меня будет диплом.
     "
-        "Но так ли он мне нужен?.. "
-        " Тяжело... Вот бы кто подсказал, дал направление, помог
+    "Но так ли он мне нужен?.. "
+    " Тяжело... Вот бы кто подсказал, дал направление, помог
     определиться с профессией. "
-        "Мне этого так сейчас не хватает. "
-
-        return
+    "Мне этого так сейчас не хватает. "
+    stop sound fadeout 2.0
+    
+    return
 
 
 default job_points = 0
 
 label scene_three:
     #scene black_screen
-    scene library:
+
+    scene black_screen with dissolve:
+        zoom 1.41
+    play sound "shagi.mp3"
+    pause 1.0
+    stop sound fadeout 2.0
+    pause 3.0
+
+    scene library with dissolve:
         zoom 1.41
 
 
@@ -467,7 +477,7 @@ label alternative_ending:
 
     maks "Я думал, что всё изменится. Думал, что это мой шанс. А теперь, кажется, что я просто был глупцом. Тут всё не так, как я представлял... Код не пишется, задания застревают на полпути. Все вокруг знают больше, умеют лучше. Я же просто тону."
     
-    show sokursnik at Position(xpos = 0.8, ypos = 1.1)
+    show sokursnik at Position(xpos = 0.65, ypos = 1.1)
     show maks at Position(xpos = 0.2, ypos = 1.1)
 
 
@@ -478,7 +488,7 @@ label alternative_ending:
 
     "«Макс уходит домой»"
 
-    scene bedroom with dissolve:
+    scene cross with dissolve:
         zoom 1.41
     "Я так хотел... Так хотел быть здесь. Думал, что это будет моим спасением. Но почему я теперь чувствую себя ещё
 хуже, чем на юрфаке? Там я хотя бы знал, что мне делать. "
